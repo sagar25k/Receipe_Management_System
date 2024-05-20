@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Information</title>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <style>
+        .card {
+            margin-top: 20px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recipe Name: {{ recipe.name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Preparation time:</strong> {{ recipe.prep_time|time }}</p>
+                        <p><strong>Cooking time:</strong> {{ recipe.cook_time|time }}</p>
+                        <p><strong>Recipe Description:</strong> {{ recipe.description }}</p>
+                        <p><strong>Recipe Servings:</strong> {{ recipe.servings }}</p>
+                        <p><strong>Recipe Type:</strong> {{ recipe.recipe_type.name }}</p>
+                        <a href="javascript:history.go(-1);" class="btn btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

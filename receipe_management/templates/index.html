@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card.shadow-sm:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-nav .nav-link {
+      color: white !important;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ddd !important; /* Lighter color on hover */
+    }
+    .footer {
+      background-color: #007afc;
+      padding: 10px 0; /* Reduced padding */
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.7rem; /* Smaller font size */
+    }
+    .footer p {
+      margin: 0; /* Remove default paragraph margin */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007afc;">
+      <div class="container">
+        <a class="navbar-brand" href="#">Recipe Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/recipeslist">Recipes</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hello, {{ user.username}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/register">Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          {% comment %} <img src="image1.jpg" class="card-img-top" alt="Image 1"> {% endcomment %}
+          <div class="card-body">
+            <h5 class="card-title">Recipes</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/recipeslist" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          {% comment %} <img src="image2.jpg" class="card-img-top" alt="Image 2"> {% endcomment %}
+          <div class="card-body">
+            <h5 class="card-title">Desserts</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          {% comment %} <img src="image3.jpg" class="card-img-top" alt="Image 3"> {% endcomment %}
+          <div class="card-body">
+            <h5 class="card-title">Snacks</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          {% comment %} <img src="image4.jpg" class="card-img-top" alt="Image 4"> {% endcomment %}
+          <div class="card-body">
+            <h5 class="card-title">Beverages</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%include 'footer.html'%}
+  {% comment %} <div class="footer">
+    <p class="text-center">© 2024 Developed by K.GUNASAGAR, Under the esteemed guidance of
+      Sri. K.V.Chandra Sekhar Assistant Professor, CSM & CSD. Department of CSM & CSD</p>
+  </div> {% endcomment %}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
