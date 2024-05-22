@@ -40,6 +40,15 @@
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required />
           </div>
+          <div class="mb-3">
+            <label for="user_type" class="form-label">User Type</label>
+            <select class="form-control" id="user_type" name="user_type" required>
+                <option value="student">Recipe Manager</option>
+                <option value="incharge">Cook</option>
+                <option value="driver">Editor</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

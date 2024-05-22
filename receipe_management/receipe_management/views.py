@@ -3,9 +3,27 @@ from django.utils.dateparse import parse_duration
 from recipe.models import Recipe, RecipeType
 from django.utils import timezone
 from datetime import datetime, timedelta
+from accounts.models import Profile
 
+from django.contrib.auth.decorators import login_required
+
+# @login_required
+# def index(request):
+#     user_profile = Profile.objects.get(user=request.user)
+#     return render(request, 'index.html',{'user_type':user_profile.user_type})
+
+@login_required
 def index(request):
-    return render(request, "index.html")
+    try:
+        user_profile = Profile.objects.get(user=request.user)
+        return render(request, 'index.html', {'user_type': user_profile.user_type})
+    except Profile.DoesNotExist:
+        # Handle the case where the profile does not exist
+        return redirect('register')  # or another appropriate view
+    
+    
+# def index(request):
+#     return render(request, "index.html")
 
 def home(request):
     return render(request, "home.html")
@@ -30,6 +48,7 @@ def recipe_details(request, name):
     recipe = get_object_or_404(Recipe, name=name)
     return render(request, 'recipe_details.html', {'recipe': recipe})
 
+@login_required
 def addreceipe(request):
     if request.method == 'POST':
         name = request.POST['name']

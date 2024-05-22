@@ -1,22 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Management</title>
-  <link rel="stylesheet" href="path/to/your/bootstrap.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <style>
-    .navbar-nav .nav-link {
+    
+    .navbar-nav .nav-link, .navbar-brand {
       color: white !important;
     }
-    .navbar-nav .nav-link:hover {
-      color: #ddd !important; /* Lighter color on hover */
-    }
+    .navbar-nav .nav-link:hover, .navbar-brand:hover {
+      color: black !important; /* Change to black on hover */
+        }
   </style>
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark myNav">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007afc;">
       <div class="container">
         <a class="navbar-brand" href="/">Recipe Management</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +35,9 @@
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="#">Hello, {{ user.username}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> {{ user.profile.user_type }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/accounts/logout">Logout</a>
@@ -53,7 +58,7 @@
       </div>
     </nav>
   </header>
-  <script src="path/to/your/jquery.js"></script>
-  <script src="path/to/your/bootstrap.js"></script>
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>

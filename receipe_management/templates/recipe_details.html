@@ -34,12 +34,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: #007bff;">
                         <h2>Recipe Name: {{ recipe.name }}</h2>
                     </div>
                     <div class="card-body">
-                        <p><strong>Preparation time:</strong> {{ recipe.prep_time|time }}</p>
-                        <p><strong>Cooking time:</strong> {{ recipe.cook_time|time }}</p>
+                        <p><strong>Preparation time:</strong> {{ recipe.prep_time}}</p>
+                        <p><strong>Cooking time:</strong> {{ recipe.cook_time }}</p>
                         <p><strong>Recipe Description:</strong> {{ recipe.description }}</p>
                         <p><strong>Recipe Servings:</strong> {{ recipe.servings }}</p>
                         <p><strong>Recipe Type:</strong> {{ recipe.recipe_type.name }}</p>

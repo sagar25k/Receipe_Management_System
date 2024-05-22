@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile Category</title>
+</head>
+<body>
+    <h1>Update Profile Category</h1>
+    <form action="{% url 'update_profile_category' %}" method="post">
+        {% csrf_token %}
+        <label for="new_category">New Profile Category:</label>
+        <select name="new_category" id="new_category">
+            {% for choice in user.profile.USER_TYPES %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Update Profile Category</button>
+    </form>
+</body>
+</html>
