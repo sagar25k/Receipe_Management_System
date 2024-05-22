@@ -44,6 +44,10 @@ def register(request):
 def login(request):
     return render(request, "login.html")
 
+def admindashboard(request):
+    return render(request, "admindashboard.html")
+
+
 def recipe_details(request, name):
     recipe = get_object_or_404(Recipe, name=name)
     return render(request, 'recipe_details.html', {'recipe': recipe})

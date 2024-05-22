@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 120vh;
+    }
+    .container {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 6px; /* Space for the fixed footer */
+    }
+    .card.shadow-sm:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-nav .nav-link, .navbar-brand {
+      color: white !important;
+    }
+    .navbar-nav .nav-link:hover, .navbar-brand:hover {
+      color: black !important; /* Change to black on hover */
+    }
+    .footer {
+      background-color: #007afc;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.7rem;
+    }
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007afc;">
+      <div class="container">
+        <a class="navbar-brand" href="/">Recipe Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/recipeslist">Recipes</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hello, {{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ user.profile.user_type }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/register">Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5">
+    <!-- New row with small cards -->
+    <div class="row mb-4">
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Recipes</h5>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Desserts</h5>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Snacks</h5>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Beverages</h5>
+            <a href="#" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Existing cards row -->
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <!-- <img src="image1.jpg" class="card-img-top" alt="Image 1"> -->
+          <div class="card-body">
+            <h5 class="card-title">Recipes</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/recipeslist" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-secondary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <!-- <img src="image2.jpg" class="card-img-top" alt="Image 2"> -->
+          <div class="card-body">
+            <h5 class="card-title">Desserts</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-secondary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <!-- <img src="image3.jpg" class="card-img-top" alt="Image 3"> -->
+          <div class="card-body">
+            <h5 class="card-title">Snacks</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-secondary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <!-- <img src="image4.jpg" class="card-img-top" alt="Image 4"> -->
+          <div class="card-body">
+            <h5 class="card-title">Beverages</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-secondary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer include -->
+  {% include 'footer.html' %}
+  <!-- 
+  <div class="footer">
+    <p class="text-center">© 2024 Developed by K.GUNASAGAR, Under the esteemed guidance of
+      Sri. K.V.Chandra Sekhar Assistant Professor, CSM & CSD. Department of CSM & CSD</p>
+  </div>
+  -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
