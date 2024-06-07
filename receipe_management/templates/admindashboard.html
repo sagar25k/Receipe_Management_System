@@ -89,7 +89,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Recipes</h5>
-            <a href="#" class="btn btn-primary">View</a>
+            <a href="/admindashboard" class="btn btn-primary">View</a>
           </div>
         </div>
       </div>
@@ -128,8 +128,8 @@
             <h5 class="card-title">Recipes</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="/recipeslist" class="btn btn-primary">View</a>
-            <a href="#" class="btn btn-secondary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a href="#" class="btn btn-secondary edit-button" data-id="1">Edit</a>
+            <a href="#" class="btn btn-danger delete-button" data-id="1">Delete</a>
           </div>
         </div>
       </div>
@@ -140,8 +140,8 @@
             <h5 class="card-title">Desserts</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="#" class="btn btn-primary">View</a>
-            <a href="#" class="btn btn-secondary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a href="#" class="btn btn-secondary edit-button" data-id="2">Edit</a>
+            <a href="#" class="btn btn-danger delete-button" data-id="2">Delete</a>
           </div>
         </div>
       </div>
@@ -152,8 +152,8 @@
             <h5 class="card-title">Snacks</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="#" class="btn btn-primary">View</a>
-            <a href="#" class="btn btn-secondary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a href="#" class="btn btn-secondary edit-button" data-id="3">Edit</a>
+            <a href="#" class="btn btn-danger delete-button" data-id="3">Delete</a>
           </div>
         </div>
       </div>
@@ -164,8 +164,8 @@
             <h5 class="card-title">Beverages</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="#" class="btn btn-primary">View</a>
-            <a href="#" class="btn btn-secondary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a href="#" class="btn btn-secondary edit-button" data-id="4">Edit</a>
+            <a href="#" class="btn btn-danger delete-button" data-id="4">Delete</a>
           </div>
         </div>
       </div>
@@ -181,8 +181,13 @@
   </div>
   -->
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+  <script>
+    $(document).ready(function() {
+      $('.edit-button').click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        // Implement the logic for editing
+        // For example, redirect to an edit page with the recipe ID

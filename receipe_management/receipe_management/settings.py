@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipe',
     'accounts',
+    'crispy_forms',
+    'desserts',
+    'beverages',
+    'snacks',
+    'icecreams',
+    'veg',
+    'nonveg',
+    
 ]
 
 MIDDLEWARE = [
@@ -128,7 +135,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'login'  # URL to redirect to for login
-LOGIN_REDIRECT_URL = 'index'  # URL to redirect to after login
+LOGIN_REDIRECT_URL = 'view'  # URL to redirect to after login
 
 
 # Default primary key field type

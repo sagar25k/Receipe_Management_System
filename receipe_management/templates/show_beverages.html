@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Beverage Recipes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Beverage Recipes</h1>
+        <div class="row">
+            {% for recipe in recipes %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ recipe.image_url }}" class="card-img-top" alt="{{ recipe.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                            <h6>Description</h6>
+                            <p class="card-text">{{ recipe.description }}</p>
+                            <h6>Category</h6>
+                            <p>{{ recipe.category }}</p>
+                            <h6>Ingredients</h6>
+                            <ul>
+                                {% for ingredient in recipe.ingredients.splitlines %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+                            <h6>Instructions</h6>
+                            <p>{{ recipe.instructions }}</p>
+                            {% comment %} <p><strong>Created At:</strong> {{ recipe.created_at|date:"D, d M Y H:i:s" }}</p>
+                            <p><strong>Updated At:</strong> {{ recipe.updated_at|date:"D, d M Y H:i:s" }}</p> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button onclick="location.href='/'" class="btn btn-primary">Back</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add Dessert Recipe</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add Dessert Recipe</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title.label_tag }} {{ form.title }}
+            </div>
+            <div class="form-group">
+                {{ form.description.label_tag }} {{ form.description }}
+            </div>
+            <div class="form-group">
+                {{ form.category.label_tag }} {{ form.category }}
+            </div>
+            <div class="form-group">
+                {{ form.ingredients.label_tag }} {{ form.ingredients }}
+            </div>
+            <div class="form-group">
+                {{ form.instructions.label_tag }} {{ form.instructions }}
+            </div>
+            <button type="submit" class="btn btn-primary">Add Recipe</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

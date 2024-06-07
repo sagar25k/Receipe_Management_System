@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Recipe Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .recipe-card {
+            border-radius: 10px; /* Adjust the value as needed */
+            border: 2px solid #ccc; /* Add border */
+        }
+        
+        .recipe-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .recipe-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 3px 0;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .add-recipe-button {
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            transform: translateX(-50px);
+            transition: transform 0.3s ease;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Recipe Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recipeslist">Recipes</a>
+            </li>
+            {% comment %} <li class="nav-item">
+                <a class="nav-link" href="/addreceipe/">Add Recipe</a>
+            </li> {% endcomment %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hello, {{ user.username}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ user.profile.user_type }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/register">Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="jumbotron jumbotron-fluid text-center text-white" style="background-image: url('https://source.unsplash.com/1600x400/?food'); background-size: cover;">
+    <div class="container">
+        <h1 class="display-4">Delicious Recipes</h1>
+        <p class="lead">Explore and manage your favorite recipes</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Recipe Categories -->
+    <h2 class="mb-4">Recipe Categories</h2>
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?recipe" class="card-img-top" alt="Top Recipes">
+                <div class="card-body">
+                    <h5 class="card-title">Top Recipes</h5>
+                    <p class="card-text">Explore our top-rated recipes.</p>
+                    <a href="#" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?famous-food" class="card-img-top" alt="Famous Recipes">
+                <div class="card-body">
+                    <h5 class="card-title">Famous Recipes</h5>
+                    <p class="card-text">Try these famous recipes.</p>
+                    <a href="#" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?vegetables" class="card-img-top" alt="Veg Recipes">
+                <div class="card-body">
+                    <h5 class="card-title">Veg Recipes</h5>
+                    <p class="card-text">Discover delicious vegetarian recipes.</p>
+                    <a href="#" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?chicken,beef,seafood,meat" class="card-img-top" alt="Non-Veg Recipes">
+                <div class="card-body">
+                    <h5 class="card-title">Non-Veg Recipes</h5>
+                    <p class="card-text">Find your favorite non-vegetarian recipes.</p>
+                    <a href="#" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?desserts" class="card-img-top" alt="Desserts">
+                <div class="card-body">
+                    <h5 class="card-title">Desserts</h5>
+                    <p class="card-text">Indulge in sweet treats.</p>
+                    <a href="/desserts/" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?snacks" class="card-img-top" alt="Snacks">
+                <div class="card-body">
+                    <h5 class="card-title">Snacks</h5>
+                    <p class="card-text">Quick and easy snack recipes.</p>
+                    <a href="/snacks/" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card">
+                <img src="https://source.unsplash.com/400x300/?beverages" class="card-img-top" alt="Beverages">
+                <div class="card-body">
+                    <h5 class="card-title">Beverages</h5>
+                    <p class="card-text">Refreshing drinks and beverages.</p>
+                    <a href="/beverages/" class="btn btn-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        
+<div class="col-md-3 mb-4">
+    <div class="card recipe-card">
+        <img src="https://source.unsplash.com/400x300/?icecream" class="card-img-top" alt="Icecreams">
+        <div class="card-body">
+            <h5 class="card-title">Icecreams</h5>
+            <p class="card-text">Chill out with delightful icecreams.</p>
+            <a href="/icecreams/" class="btn btn-primary">View Recipes</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+    <div class="container">
+        <p>&copy; 2024 Recipe Management System. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="text-dark"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="text-dark"><i class="fab fa-instagram"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
