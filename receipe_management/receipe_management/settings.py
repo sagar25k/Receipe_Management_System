@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'icecreams',
     'veg',
     'nonveg',
+    'seafood',
     
 ]
 
@@ -137,6 +138,14 @@ STATICFILES_DIRS = [
 LOGIN_URL = 'login'  # URL to redirect to for login
 LOGIN_REDIRECT_URL = 'view'  # URL to redirect to after login
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_HOST_USER ='kanithigunasagar@gmail.com'
+EMAIL_HOST_PASSWORD ='Guna@sagar123'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = 'kanithigunasagar@gmail.com'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

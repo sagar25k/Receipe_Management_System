@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Snacks Recipes</title>
-    <!-- Bootstrap CSS -->
+    <title>Seafood Recipes</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Snacks Recipes</h1>
+        <h1 class="mb-4">Seafood Recipes</h1>
         <div class="row">
             {% for recipe in recipes %}
                 <div class="col-md-4 mb-4">
@@ -17,6 +16,7 @@
                         <img src="{{ recipe.image_url }}" class="card-img-top" alt="{{ recipe.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
+                            <h6>Description</h6>
                             <p class="card-text">{{ recipe.description }}</p>
                             <h6>Category</h6>
                             <p>{{ recipe.category }}</p>
@@ -28,8 +28,8 @@
                             </ul>
                             <h6>Instructions</h6>
                             <p>{{ recipe.instructions }}</p>
-                            {% comment %} <p><strong>Created At:</strong> {{ recipe.created_at|date:"D, d M Y H:i:s" }}</p>
-                            <p><strong>Updated At:</strong> {{ recipe.updated_at|date:"D, d M Y H:i:s" }}</p> {% endcomment %}
+                            <h6>Created At</h6>
+                            <p>{{ recipe.created_at }}</p>
                         </div>
                     </div>
                 </div>
@@ -40,12 +40,9 @@
                 <button onclick="location.href='/'" class="btn btn-primary">Back</button>
             </div>
             <div class="col-md-6 text-right">
-                <button onclick="location.href='/add-dessert/'" class="btn btn-success">Add Dessert</button>
+                <button onclick="location.href='/seafood/add/'" class="btn btn-success">Add seafood Recipe</button>
             </div>
-        </div>
     </div>
-
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
